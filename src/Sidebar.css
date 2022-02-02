@@ -1,0 +1,15 @@
+.sidebar {
+    background-color: black;
+    min-width: 230px;
+    flex: 0.2;
+    height: 100vh;
+}
+
+.sidebar > img {
+    object-fit: contain;
+    height: 10%;
+    width: 50%;
+    padding: 10px;
+    margin-right: auto;
+    
+}
