@@ -8,17 +8,21 @@ import { useRecoilState } from "recoil";
 import { tokenState } from "./atoms/Tokenatom";
 import { playlistState } from "./atoms/Playlistatom";
 import { userState } from './atoms/Useratoms';
-import { discoverWeeklyPlaylistState } from "./atoms/DiscoverWeeklyPlaylistAtom";
+import { currentPlaylistState } from "./atoms/currentPlaylistAtom";
+import {likedSongsPlaylistState} from "./atoms/LikedSongsPlaylistAtom";
 // import SpotifyWebApi from 'spotify-web-api-js';
+// USER_ID: 3175bp2y5e63ponjkijkrvpjanqq
 
 const spotify = new SpotifyWebApi();
 
 function App() {
   const [token, setToken] = useRecoilState(tokenState);
-  console.log("tokenatinitialization", token);
+  // console.log("tokenatinitialization", token);
   const [playlist, setPlaylist] = useRecoilState(playlistState);
   const [user, setUser] = useRecoilState(userState);
-  const [discoverWeekly, setDiscoverWeekly] = useRecoilState(discoverWeeklyPlaylistState);
+  const [currentPlaylist, setcurrentPlaylist] = useRecoilState(currentPlaylistState);
+  const [likedSongs, setLikedSongs] = useRecoilState(likedSongsPlaylistState);
+
 
   // Run code when something changes
 
@@ -39,15 +43,20 @@ function App() {
 
     spotify.getMe().then(user => {
       setUser(user);
+      // console.log(user);
     });
 
     spotify.getPlaylist("37i9dQZEVXcJCjfIOVi41e").then((response) => {
-      setDiscoverWeekly(response);
+      setcurrentPlaylist(response);
     });
 
-  }, [token, setToken, setPlaylist, setUser, setDiscoverWeekly]);
+    spotify.getMySavedTracks().then(res => {
+        setLikedSongs((res?.items));
+    });
 
-  return <div className="app"> {token ? <Player /> : <Login />}</div>;
+  }, [token, setToken, setPlaylist, setUser, setcurrentPlaylist, setLikedSongs]);
+
+  return <div className="app"> {token ? <Player spotify={spotify} /> : <Login />}</div>;
 }
 
 export default App;

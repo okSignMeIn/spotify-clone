@@ -2,7 +2,7 @@
     padding: 30px;
     width: 100%;
     height: 100vh;
-    overflow-y: overlay;
+    overflow: overlay;
     flex: 0.8;
     color: white;
     background: linear-gradient(transparent, rgba(0, 0, 0, 1));
@@ -72,4 +72,19 @@
   
   .body__infoText > p {
     font-size: 14px;
+  }
+
+  .LikedSongs_logo {
+    background-color: black;
+    height: 18vw;
+    width: 18vw;
+    padding: 20px;
+    margin: 0 20px;
+    box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+  }
+
+  .LikedSongs_logo:hover {
+    transition: 100ms transform ease-in;
+    transform: scale(1.08);
+    color:#1ed15e ;
   }
