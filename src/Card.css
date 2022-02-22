@@ -1,0 +1,14 @@
+.card {
+    padding: 20px;
+    display: flex 0.25;
+    text-align: center;
+}
+
+.card > img {
+    height: 25vh;
+    width: 15vw;
+}
+
+.card > h4 {
+    padding: 10px 20px;
+}

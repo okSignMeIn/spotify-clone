@@ -11,16 +11,29 @@ import { itemState } from "./atoms/ItemState";
 import { playingState } from "./atoms/PlayingState";
 import {likedSongsPlaylistState} from "./atoms/LikedSongsPlaylistAtom";
 import {showLikedPlaylistState } from "./atoms/showLikedState";
+import { SearchState } from "./atoms/SearchAtom";
+import Row from "./Row";
+import {SearchResponse} from "./atoms/SearchResponse";
 
 function Body({ spotify }) {
   const [_showLikedPlaylistState] = useRecoilState(showLikedPlaylistState);
+  const [searchState, setSearch] = useRecoilState(SearchState);
   // console.log("Show liked playist:  ",_showLikedPlaylistState);
   const [likedSongs] = useRecoilState(likedSongsPlaylistState);
   // console.log(likedSongs);
   const [currentPlaylist] = useRecoilState(currentPlaylistState);
   const [item, setItem] = useRecoilState(itemState);
   const [playing, setPlaying] = useRecoilState(playingState);
+  const [searchRes, setSearchRes] = useRecoilState(SearchResponse);
 
+  // const Search = (query, type=["album",'artist',"playlist","track"]) =>
+  // {
+  //   spotify.search(query,type).then(res => {
+  //     setSearchRes(res);
+  //     // console.log(SearchResponse);
+  //   });
+  // }
+  // console.log("Search term", searchTerm);
   const playPlaylist = (id) => {
     spotify
       .play({
@@ -29,7 +42,7 @@ function Body({ spotify }) {
       .then((response) => {
         spotify.getMyCurrentPlayingTrack().then((r) => {
           setPlaying(true);
-          itemState(r.item);
+          setItem(r.item);
         });
       });
   };
@@ -42,16 +55,49 @@ function Body({ spotify }) {
       .then((res) => {
         spotify.getMyCurrentPlayingTrack().then((r) => {
           setPlaying(true);
-          itemState(r.item);
+          setItem(r.item);
         });
       });
   };
-  if(_showLikedPlaylistState){
+  // console.log(searchTerm);
+  // if(searchTerm) {
+    
+  //   return (
+    
+      // <div className="body">
+      // <Header />
+      // <div className="body__songs">
+      //  {/* {Search(searchTerm)} */}
+      //  <Row object_title="Artist" object={searchRes} />
+      //  {/* <Row title="Album" items={SearchResponse.artists} />
+      //  <Row title="Artist" items={SearchResponse.artists} />
+      //  <Row title="Artist" items={SearchResponse.artists} /> */}
+      // </div>
+      // </div>
+  //   );
+  // }
+
+ if(searchState) {
+   return(
+     <div className="body">
+       <Header spotify={spotify}/>
+       <div className="body__songs">
+        <Row object_title="Songs" object={searchRes.tracks} spotify={spotify}/>
+        <Row object_title="Albums" object={searchRes.albums} spotify={spotify}/>
+        <Row object_title="Artists" object={searchRes.artists} spotify={spotify}/>
+       </div>
+        
+       
+     </div>
+    
+   );
+ }
+ if(_showLikedPlaylistState){
     return (
     <div className="body">
-      <Header />
+      <Header spotify={spotify}/>
       <div className="body__info">
-        <FavoriteIcon fontSize="large" className="LikedSongs_logo" />
+        <FavoriteIcon fontSize="large" id="LikedSongs_logo" />
         <div className="body__infoText">
           <strong>PLAYLIST</strong>
           <h2>Liked Songs</h2>
@@ -70,7 +116,7 @@ function Body({ spotify }) {
   else {
     return (
     <div className="body">
-      <Header />
+      <Header spotify={spotify}/>
       <div className="body__info">
         <img src={currentPlaylist?.images[0].url} alt="" />
         <div className="body__infoText">

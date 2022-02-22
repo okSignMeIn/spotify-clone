@@ -1,0 +1,13 @@
+.hdr
+{
+    display: flex;
+    justify-content: space-between;
+    
+    
+}
+
+.Button {
+    border: 1vw;
+    color: white;
+    
+}

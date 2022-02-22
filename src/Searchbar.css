@@ -1,0 +1,15 @@
+.header__left {
+    flex: 0.5;
+    display: flex;
+    background-color: white;
+    padding: 10px;
+    border-radius: 30px;
+    color: gray;
+    align-items: center;
+  }
+  
+  .header__left > input {
+    border: none;
+    outline: none;
+    width: 100%;
+  }

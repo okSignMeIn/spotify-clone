@@ -14,6 +14,7 @@ import {likedSongsPlaylistState} from "./atoms/LikedSongsPlaylistAtom";
 // USER_ID: 3175bp2y5e63ponjkijkrvpjanqq
 
 const spotify = new SpotifyWebApi();
+// console.log("spot", spotify);
 
 function App() {
   const [token, setToken] = useRecoilState(tokenState);

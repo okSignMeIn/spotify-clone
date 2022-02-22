@@ -12,6 +12,7 @@ import { userState } from "./atoms/Useratoms";
 import { showLikedPlaylistState } from "./atoms/showLikedState";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
+
 function Sidebar({spotify}) {
 
   const [ playlists ] = useRecoilState(playlistState);
@@ -30,7 +31,7 @@ function Sidebar({spotify}) {
   return <div className="sidebar">
     <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png" alt="spotify_logo" />
     <SidebarOption title="Home" Icon={HomeIcon} id="37i9dQZEVXcJCjfIOVi41e" setPlaylist={setPlaylist} showLike={false}/>
-    <SidebarOption title="Search" Icon={SearchOutlinedIcon} showLike={false}/>
+    {/* <SidebarOption title="Search" Icon={SearchOutlinedIcon} showLike={false} _searchState={searchState}/> */}
     <SidebarOption title="Liked Songs" Icon={FavoriteBorderIcon} showLike={true}/>
     <strong className="sidebar_title">PLAYLISTS</strong>
     <hr />
