@@ -1,5 +1,5 @@
 export const authEndpoint="https://accounts.spotify.com/authorize";
-const redirectUri="http://localhost:3000/";
+const redirectUri="https://spotify-clone-teal-one.vercel.app/";
 const clientId= "4c14f5f88a59494daa08e73bce8f1b4f";
 const scopes=[
     "user-read-playback-state",
