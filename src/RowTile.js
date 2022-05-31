@@ -10,7 +10,7 @@ import "./hdr.css";
 import { SearchState } from "./atoms/SearchAtom";
 import { Divider } from '@mui/material';
 
-function Row({object_title, object, spotify, setShowAll, extended}) {
+function RowTile({object_title,object_type, object, spotify, setShowAll, extended = false}) {
   
 
   const [item, setItem] = useRecoilState(itemState);
@@ -31,11 +31,10 @@ function Row({object_title, object, spotify, setShowAll, extended}) {
       });
   };
 
-
-    return (
+    return(
       <div className='searchItem__card'>
         <div className='hdr'>
-          <h2>{object_title}</h2> 
+          <h2>{object_title}</h2>
           <Button style={{
         borderRadius: 35,
         backgroundColor: "#21b6ae"
@@ -43,18 +42,17 @@ function Row({object_title, object, spotify, setShowAll, extended}) {
             setShowAll(object_title);
           }} >See All</Button>
         </div>
-        
-          <div>
-            {extended ? object?.items.map(track => (//dont replace these parenthesis with curly braces inside map
-              <SongRow track={track} playSong={playSong} />
-            )) : object?.items.slice(0,4).map(track => (//dont replace these parenthesis with curly braces inside map
-              <SongRow track={track} playSong={playSong} />
-            ))
-            }
-           </div>    
+        <div className='searchItem__card_info'>
+            
+          {extended ? object?.items.map(content => (
+            <Card _item={content}/>
+          )) : object?.items.slice(0,4).map(content => (
+            <Card _item={content}/>
+          ))}
+        </div>
       </div>
     );
 }
-export default Row;
+export default RowTile;
 
 

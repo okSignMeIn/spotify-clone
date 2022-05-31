@@ -5,11 +5,12 @@
     align-items: center;
     z-index: 100;
     color: white;
+    /* overflow: scroll; */
   }
   
   .songRow:hover {
     cursor: pointer;
-    background-color: black;
+    background-color: #827397;
     opacity: 0.8;
   }
   
@@ -24,10 +25,10 @@
   .songRow__info > p {
     font-size: 14px;
     margin-top: 3px;
-    color: gray;
+    color: #E9D5CA;
   }
   
   .songRow__album {
-    height: 40px;
-    width: 40px;
+    height: 70px;
+    width: 70px;
   }

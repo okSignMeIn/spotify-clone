@@ -2,12 +2,18 @@
 {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 50px;
     
-    
+}
+
+.hdr > h2 {
+    padding-left: 35px;
+    font-size: 1.9rem;
 }
 
 .Button {
     border: 1vw;
     color: white;
+    background-color: #008080;
     
 }

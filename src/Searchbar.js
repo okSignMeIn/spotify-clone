@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import "./Searchbar.css";
 import { useRecoilState } from 'recoil';
@@ -8,15 +8,17 @@ import CloseIcon from '@mui/icons-material/Close';
 
 
 
-function Searchbar({spotify}) {
-
+function Searchbar({spotify, setShowAll}) {
   const [searchState, setSearchState] = useRecoilState(SearchState);
   const [searchResponse, setSearchResponse] = useRecoilState(SearchResponse);
 
   return <div className='header__left'>
     <SearchIcon />
     <input id="searchInput" placeholder="Search for Artists, Songs, or Podcasts" type="text" onInput={(event) => {
-           spotify.search(event.currentTarget.value,["album",'artist',"playlist","track"]).then(res => {
+          let eve=event.currentTarget.value.trimStart();
+          console.log("eve",eve);
+
+          spotify.search(eve,["album",'artist',"playlist","track"]).then(res => {
            setSearchResponse(res); 
            console.log(res);     
           });
@@ -24,6 +26,7 @@ function Searchbar({spotify}) {
     <CloseIcon onClick={() => { 
       setSearchState(false);
       document.getElementById("searchInput").value="";
+      setShowAll("null")
       setSearchResponse({});
     }
     }/>

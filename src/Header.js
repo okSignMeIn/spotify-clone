@@ -6,12 +6,12 @@ import { useRecoilState } from "recoil";
 import Searchbar from './Searchbar';
 
 
-function Header({spotify}) {
+function Header({spotify, setShowAll}) {
   const [ user ] = useRecoilState(userState);
 
   return (
     <div className="header">
-      <Searchbar spotify={spotify} />
+      <Searchbar spotify={spotify} setShowAll={setShowAll}/>
       <div className="header__right">
         <Avatar alt={user?.display_name} src={user?.images[0].url} />
         <h4>{user?.display_name}</h4>

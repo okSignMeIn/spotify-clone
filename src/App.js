@@ -44,10 +44,9 @@ function App() {
 
     spotify.getMe().then(user => {
       setUser(user);
-      // console.log(user);
     });
 
-    spotify.getPlaylist("37i9dQZEVXcJCjfIOVi41e").then((response) => {
+    spotify.getPlaylist("5HqyPLi4yJ6jh6JGB14BX0").then((response) => {
       setcurrentPlaylist(response);
     });
 

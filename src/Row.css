@@ -9,8 +9,13 @@
 
 .searchItem__card {
     padding: 20px;
+    margin-bottom: 55px;
+    
 }
 
 .searchItem__card_info {
-    display: flex;
+    /* display: flex;
+    padding-top: 62px; */
+    grid-template-columns: repeat(4, 300px);
+    display: grid;
 }
