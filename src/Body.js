@@ -21,14 +21,12 @@ function Body({ spotify }) {
   const [showAll, setShowAll] = useState("null");
   const [_showLikedPlaylistState] = useRecoilState(showLikedPlaylistState);
   const [searchState, setSearch] = useRecoilState(SearchState);
-  // console.log("Show liked playist:  ",_showLikedPlaylistState);
+  
   const [likedSongs] = useRecoilState(likedSongsPlaylistState);
-  // console.log(likedSongs);
   const [currentPlaylist] = useRecoilState(currentPlaylistState);
   const [item, setItem] = useRecoilState(itemState);
   const [playing, setPlaying] = useRecoilState(playingState);
   const [searchRes, setSearchRes] = useRecoilState(SearchResponse);
-  // 5ht7ItJgpBH7W6vJ5BqpPr
   const playPlaylist = (id) => {
     spotify
       .play({
@@ -54,23 +52,6 @@ function Body({ spotify }) {
         });
       });
   };
-  // console.log(searchTerm);
-  // if(searchTerm) {
-
-  //   return (
-
-  // <div className="body">
-  // <Header />
-  // <div className="body__songs">
-  //  {/* {Search(searchTerm)} */}
-  //  <Row object_title="Artist" object={searchRes} />
-  //  {/* <Row title="Album" items={SearchResponse.artists} />
-  //  <Row title="Artist" items={SearchResponse.artists} />
-  //  <Row title="Artist" items={SearchResponse.artists} /> */}
-  // </div>
-  // </div>
-  //   );
-  // }
 
   if (Object.keys(searchRes).length > 0) {
     console.log("object length", Object.keys(searchRes).length);
@@ -78,7 +59,6 @@ function Body({ spotify }) {
       <div className="body">
         <Header spotify={spotify} setShowAll={setShowAll} />
         <div className="body__songs">
-          {/* showAll */}
           {showAll === "null" && (
             <>
               <Row

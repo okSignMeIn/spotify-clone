@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import Login from "./Login";
 import { getTokenfromURL } from "./spotify";
 import Player from "./Player";
@@ -10,15 +9,12 @@ import { playlistState } from "./atoms/Playlistatom";
 import { userState } from './atoms/Useratoms';
 import { currentPlaylistState } from "./atoms/currentPlaylistAtom";
 import {likedSongsPlaylistState} from "./atoms/LikedSongsPlaylistAtom";
-// import SpotifyWebApi from 'spotify-web-api-js';
-// USER_ID: 3175bp2y5e63ponjkijkrvpjanqq
+
 
 const spotify = new SpotifyWebApi();
-// console.log("spot", spotify);
 
 function App() {
   const [token, setToken] = useRecoilState(tokenState);
-  // console.log("tokenatinitialization", token);
   const [playlist, setPlaylist] = useRecoilState(playlistState);
   const [user, setUser] = useRecoilState(userState);
   const [currentPlaylist, setcurrentPlaylist] = useRecoilState(currentPlaylistState);

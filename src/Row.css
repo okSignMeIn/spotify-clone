@@ -14,8 +14,6 @@
 }
 
 .searchItem__card_info {
-    /* display: flex;
-    padding-top: 62px; */
     grid-template-columns: repeat(4, 300px);
     display: grid;
 }

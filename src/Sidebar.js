@@ -31,7 +31,6 @@ function Sidebar({spotify, setShowAll}) {
   return <div className="sidebar">
     <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png" alt="spotify_logo" />
     <SidebarOption title="Home" Icon={HomeIcon} id="5HqyPLi4yJ6jh6JGB14BX0" setPlaylist={setPlaylist} showLike={false}/>
-    {/* <SidebarOption title="Search" Icon={SearchOutlinedIcon} showLike={false} _searchState={searchState}/> */}
     <SidebarOption title="Liked Songs" Icon={FavoriteBorderIcon} showLike={true}/>
     <strong className="sidebar_title">PLAYLISTS</strong>
     <hr />
