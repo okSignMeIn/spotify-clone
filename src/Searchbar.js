@@ -16,11 +16,11 @@ function Searchbar({spotify, setShowAll}) {
     <SearchIcon />
     <input id="searchInput" placeholder="Search for Artists, Songs, or Podcasts" type="text" onInput={(event) => {
           let eve=event.currentTarget.value.trimStart();
-          console.log("eve",eve);
+          
 
           spotify.search(eve,["album",'artist',"playlist","track"]).then(res => {
            setSearchResponse(res); 
-           console.log(res);     
+               
           });
       }} onFocus={() => {setSearchState(true)}}/>
     <CloseIcon onClick={() => { 
