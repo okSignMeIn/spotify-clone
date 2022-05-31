@@ -54,7 +54,6 @@ function Body({ spotify }) {
   };
 
   if (Object.keys(searchRes).length > 0) {
-    console.log("object length", Object.keys(searchRes).length);
     return (
       <div className="body">
         <Header spotify={spotify} setShowAll={setShowAll} />
